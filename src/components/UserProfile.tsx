@@ -48,7 +48,7 @@ export default function UserProfile() {
     } finally {
       setLoading(false);
     }
-  }, [user?.id]);
+  }, [user]);
 
   // Pobierz dane użytkownika przy załadowaniu komponentu
   useEffect(() => {
