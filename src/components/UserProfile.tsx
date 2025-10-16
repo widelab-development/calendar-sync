@@ -4,6 +4,7 @@ import { supabase } from "@/lib/supabase";
 import { useState, useEffect, useCallback } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { User } from "next-auth";
+import Image from "next/image";
 
 export default function UserProfile() {
   const { user: sessionUser, signOut } = useAuth();
@@ -139,6 +140,32 @@ export default function UserProfile() {
       <div>
         <h2 className="mb-2 text-xl font-semibold">Profil użytkownika</h2>
         <p className="text-gray-300">Email: {user?.email}</p>
+        <div className="mt-3 flex justify-center">
+          {user?.image ? (
+            <Image
+              src={user.image}
+              alt={`Avatar użytkownika ${user.name || user.email}`}
+              width={64}
+              height={64}
+              className="h-16 w-16 rounded-full border-2 border-gray-300 object-cover"
+            />
+          ) : (
+            <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-gray-300 bg-gray-600 text-white">
+              <span className="text-lg font-semibold">
+                {user?.name
+                  ? user.name
+                      .split(" ")
+                      .map((n) => n[0])
+                      .join("")
+                      .toUpperCase()
+                      .slice(0, 2)
+                  : user?.email
+                    ? user.email[0].toUpperCase()
+                    : "?"}
+              </span>
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="space-y-2">
