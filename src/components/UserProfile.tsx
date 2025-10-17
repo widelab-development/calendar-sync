@@ -5,6 +5,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { User } from "next-auth";
 import Image from "next/image";
+import CalendarEvents from "@/components/CalendarEvents";
 
 export default function UserProfile() {
   const { user: sessionUser, signOut } = useAuth();
@@ -185,6 +186,8 @@ export default function UserProfile() {
           Aktualna wartość: {checkboxValue}
         </p>
       </div>
+
+      <CalendarEvents />
 
       <button
         onClick={() => signOut()}
