@@ -117,9 +117,6 @@ export default function UserProfile() {
 
       console.log("Wartość zapisana pomyślnie:", newValue);
       setCheckboxValue(newValue);
-
-      // Opcjonalnie: odśwież dane z bazy aby upewnić się, że są zsynchronizowane
-      await fetchUserPreferences();
     } catch (error) {
       console.error("Nieoczekiwany błąd:", error);
       alert("Wystąpił nieoczekiwany błąd podczas zapisywania");
