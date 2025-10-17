@@ -14,16 +14,16 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const maxResults = searchParams.get("maxResults") || "50";
 
-    // Oblicz zakres dat (7 dni od teraz)
+    // Oblicz zakres dat
     const now = new Date();
-    const sevenDaysLater = new Date();
-    sevenDaysLater.setDate(sevenDaysLater.getDate() + 7);
+    const daysToSync = new Date();
+    daysToSync.setDate(daysToSync.getDate() + 5);
 
     // Pobierz wydarzenia z Google Calendar API
     const calendarUrl =
       `https://www.googleapis.com/calendar/v3/calendars/primary/events?` +
       `timeMin=${now.toISOString()}` +
-      `&timeMax=${sevenDaysLater.toISOString()}` +
+      `&timeMax=${daysToSync.toISOString()}` +
       `&maxResults=${maxResults}` +
       `&singleEvents=true` +
       `&orderBy=startTime`;

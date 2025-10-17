@@ -50,7 +50,7 @@ export default function CalendarEvents() {
     return (
       <div className="rounded-lg bg-gray-800 p-6">
         <h3 className="mb-3 text-lg font-semibold text-white">
-          Wydarzenia z kalendarza (7 dni)
+          Wydarzenia z kalendarza (5 dni)
         </h3>
         <p className="text-gray-400">Ładowanie wydarzeń...</p>
       </div>
@@ -61,7 +61,7 @@ export default function CalendarEvents() {
     return (
       <div className="rounded-lg bg-gray-800 p-6">
         <h3 className="mb-3 text-lg font-semibold text-white">
-          Wydarzenia z kalendarza (7 dni)
+          Wydarzenia z kalendarza (5 dni)
         </h3>
         <p className="text-red-400">Błąd: {error}</p>
         <p className="mt-2 text-sm text-gray-400">
@@ -75,10 +75,10 @@ export default function CalendarEvents() {
     return (
       <div className="rounded-lg bg-gray-800 p-6">
         <h3 className="mb-3 text-lg font-semibold text-white">
-          Wydarzenia z kalendarza (7 dni)
+          Wydarzenia z kalendarza (5 dni)
         </h3>
         <p className="text-gray-400">
-          Brak nadchodzących wydarzeń w ciągu najbliższych 7 dni.
+          Brak nadchodzących wydarzeń w ciągu najbliższych 5 dni.
         </p>
       </div>
     );
@@ -87,7 +87,7 @@ export default function CalendarEvents() {
   return (
     <div className="rounded-lg bg-gray-800 p-6">
       <h3 className="mb-4 text-lg font-semibold text-white">
-        Wydarzenia z kalendarza (7 dni)
+        Wydarzenia z kalendarza (5 dni)
       </h3>
       <div className="space-y-3">
         {events.map((event) => (
