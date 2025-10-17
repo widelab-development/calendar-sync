@@ -1,7 +1,7 @@
 "use client";
 
 import { supabase } from "@/lib/supabase";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { User } from "next-auth";
 import Image from "next/image";
@@ -13,6 +13,7 @@ export default function UserProfile() {
   const [checkboxValue, setCheckboxValue] = useState(0);
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
+  const hasFetchedRef = useRef(false);
 
   const fetchUserPreferences = useCallback(async () => {
     if (!user?.id) {
@@ -50,12 +51,15 @@ export default function UserProfile() {
     } finally {
       setLoading(false);
     }
-  }, [user]);
+  }, [user?.id]); // Używaj tylko user.id zamiast całego obiektu user
 
-  // Pobierz dane użytkownika przy załadowaniu komponentu
+  // Pobierz dane użytkownika przy załadowaniu komponentu (tylko raz)
   useEffect(() => {
-    fetchUserPreferences();
-  }, [fetchUserPreferences]);
+    if (!hasFetchedRef.current && user?.id) {
+      hasFetchedRef.current = true;
+      fetchUserPreferences();
+    }
+  }, [user?.id, fetchUserPreferences]);
 
   const handleCheckboxChange = async (newValue: number) => {
     if (!user?.id) {
