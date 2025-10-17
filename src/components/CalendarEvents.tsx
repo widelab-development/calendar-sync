@@ -1,6 +1,7 @@
 "use client";
 
-import { useCalendarEvents, CalendarEvent } from "@/hooks/useCalendarEvents";
+import { useCalendarEvents } from "@/hooks/useCalendarEvents";
+import type { CalendarEvent } from "@/types/calendar";
 
 function formatEventDate(event: CalendarEvent) {
   const start = event.start.dateTime || event.start.date;

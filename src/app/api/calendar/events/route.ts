@@ -8,8 +8,8 @@ import {
   saveEventsToCache,
   removeDeletedEvents,
   cleanupOldEvents,
-  CalendarEvent,
 } from "@/lib/calendar-cache";
+import type { CalendarEvent } from "@/types/calendar";
 
 export async function GET(request: NextRequest) {
   try {

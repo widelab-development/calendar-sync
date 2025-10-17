@@ -1,30 +1,8 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-
-export interface CalendarEvent {
-  id: string;
-  summary: string;
-  description?: string;
-  start: {
-    dateTime?: string;
-    date?: string;
-  };
-  end: {
-    dateTime?: string;
-    date?: string;
-  };
-  location?: string;
-  htmlLink?: string;
-}
-
-export interface CalendarEventsResponse {
-  items: CalendarEvent[];
-  summary: string;
-  fromCache?: boolean;
-  updated?: number;
-}
+import type { CalendarEvent, CalendarEventsResponse } from "@/types/calendar";
 
 const CACHE_KEY = "calendar_events_cache";
-const CACHE_DURATION = 5 * 60 * 1000; // 5 minut - czas po którym cache jest uznawany za przestarzały
+const CACHE_DURATION = 5000; //* 60 * 1000; // 5 minut - czas po którym cache jest uznawany za przestarzały
 
 export function useCalendarEvents() {
   const [events, setEvents] = useState<CalendarEvent[]>([]);

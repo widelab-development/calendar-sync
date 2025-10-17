@@ -1,30 +1,5 @@
 import { supabase } from "@/lib/supabase";
-
-export interface CalendarEvent {
-  id: string;
-  summary?: string;
-  description?: string;
-  location?: string;
-  start: {
-    dateTime?: string;
-    date?: string;
-    timeZone?: string;
-  };
-  end: {
-    dateTime?: string;
-    date?: string;
-    timeZone?: string;
-  };
-  htmlLink?: string;
-  status?: string;
-}
-
-export interface CalendarSyncInfo {
-  userId: string;
-  syncToken?: string;
-  lastSyncAt: string;
-  lastUpdated?: string; // Timestamp ostatniej aktualizacji wydarzeń
-}
+import type { CalendarEvent, CalendarSyncInfo } from "@/types/calendar";
 
 /**
  * Pobiera informacje o ostatniej synchronizacji dla użytkownika
